@@ -432,7 +432,7 @@ func (c *contextWithCancel) Cancel() {
 	c.cancel()
 }
 
-// WrapContext wraps a context.Context in our type of Context.
+// NewContext wraps a context.Context in our type of Context.
 // Timeout of zero means never time out.
 // Cancel function should be called when operation is completed.
 func NewContext(timeout time.Duration) Context {

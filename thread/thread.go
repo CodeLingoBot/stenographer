@@ -166,7 +166,7 @@ func (t *Thread) listPacketFilesOnDisk() (out []string) {
 	return
 }
 
-// This method should only be called once the t.mu has been acquired!
+// trackNewFile; should only be called once the t.mu has been acquired!
 func (t *Thread) trackNewFile(filename string) error {
 	filepath := filepath.Join(t.packetPath, filename)
 	bf, err := blockfile.NewBlockFile(filepath, t.fc)
@@ -301,7 +301,7 @@ func (t *Thread) OldestFileTimestamp() time.Time {
 	return time.Unix(0, ts*1000 /* micros to nanos */)
 }
 
-// This method should only be called once the t.mu has been acquired!
+// untrackFile; should only be called once the t.mu has been acquired!
 func (t *Thread) untrackFile(filename string) error {
 	v(1, "Thread %v untracking %q", t.id, filename)
 	b := t.files[filename]

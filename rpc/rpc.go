@@ -42,14 +42,14 @@ type stenographerServer struct {
         rpcCfg *config.RpcConfig
 }
 
-// Removes file from disk, primarily used to clean up during calls to RetrievePcap.
+// removeFile removes file from disk, primarily used to clean up during calls to RetrievePcap.
 func removeFile(path string) {
         if err := os.Remove(path); err != nil {
                 log.Printf("Rpc: Unable to remove file %s: %v", path, err)
         }
 }
 
-// Implements RetrievePcap call which takes a client query request, applies it
+// RetrievePcap implements RetrievePcap call which takes a client query request, applies it
 // to stenoread, and streams the PCAP back to the client.
 func (s *stenographerServer) RetrievePcap(
         req *pb.PcapRequest,
@@ -126,7 +126,7 @@ func (s *stenographerServer) RetrievePcap(
         return nil
 }
 
-// Called from main via goroutine, this function opens the gRPC port, loads
+// RunStenorpc; Called from main via goroutine, this function opens the gRPC port, loads
 // certificates, and runs the gRPC server.
 func RunStenorpc(rpcCfg *config.RpcConfig) {
         log.Print("Starting stenorpc")

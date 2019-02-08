@@ -56,7 +56,7 @@ type httpLog struct {
 	body   string
 }
 
-// New returns a new ResponseWriter which provides a nice
+// Log; New returns a new ResponseWriter which provides a nice
 // String() method for easy printing.  The expected usage is:
 //   func (h *myHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 //     w = httputil.Log(w, r, false)
